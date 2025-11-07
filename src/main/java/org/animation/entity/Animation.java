@@ -17,7 +17,7 @@ public class Animation implements Serializable {
   private String id;
 
   /**
-   * 子ID，可能用于区分同一动画的不同版本，该字段补充html解析获得
+   * 子ID，可能用于区分同一动画的不同版本，该字段不从html解析获得
    */
   private Integer subId;
 
@@ -95,4 +95,8 @@ public class Animation implements Serializable {
    */
   private List<String> coverUrls;
 
+  /**
+   * 角色列表
+   */
+  private List<String> roles;
 }
