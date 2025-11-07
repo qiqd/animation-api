@@ -99,4 +99,8 @@ public class Animation implements Serializable {
    * 角色列表
    */
   private List<String> roles;
+  /**
+   * 语言
+   */
+  private String language;
 }
