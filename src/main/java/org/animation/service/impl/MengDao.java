@@ -2,6 +2,7 @@ package org.animation.service.impl;
 
 import org.animation.entity.*;
 import org.animation.service.HtmlParser;
+import org.animation.util.StringUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -100,11 +101,11 @@ public class MengDao implements HtmlParser, Serializable {
     animation.setTitleCn(titleCn);
     animation.setStatus(status);
     animation.setCoverUrls(List.of(cover));
-    animation.setGenres(List.of(genre));
-    animation.setDescription(description);
-    animation.setActors(List.of(cast));
-    animation.setRoles(List.of(role));
-    animation.setTitleEn(otherName);
+    animation.setGenre(StringUtil.removeUnusedChar(genre).substring(3));
+    animation.setDescription(description.substring(3));
+    animation.setActor(StringUtil.removeUnusedChar(cast).substring(3));
+    animation.setRole(StringUtil.removeUnusedChar(role).substring(3));
+    animation.setTitleEn(otherName.substring(3).trim());
     return new AnimationDetail(animation, sources);
   }
 

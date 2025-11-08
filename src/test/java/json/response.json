@@ -1,214 +1,82 @@
 {
   "animation": {
     "actors": [
-      "演员 :潘惠美,高桥李依,大塚刚央,伊东健人,内山夕实,高柳知叶,伊驹友里绘,"
+      "小杉十郎太,大塚周夫,小林清志,铃置洋孝,森功至,"
     ],
+    "ariDate": "1993-11-19(日本)",
     "coverUrls": [
-      "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2874939827.jpg"
+      "https://senfun.in//pic/cover/1993743391.jpg"
     ],
-    "description": "“在演艺圈里，谎言就是武器。 ” 在小城市工作的妇产科医生・五郎，有一天他所推的偶像“B小町”出现在了他的面前。“B小町”有着一个禁忌的秘密。 如此这般的两人实现了最糟糕的相遇，从此命运的齿轮开始转动——",
+    "description": "《JoJo的奇妙冒险OVA第一期》(1993年-1994年，共6话)是根据原作漫画第三部后半部分改编的动画作品，描述发生在埃及的战斗。另外，第二期OVA(2000年-2002年，共7话)改编的是原作漫画第三部前半部分的内容。 2007年5月25日发售的《JoJo的奇妙冒险 第3部 星尘斗士 DVD-BOX》(共13话)收录了OVA第一期和第二期的全部内容，并按故事发生的时间先后顺序，把OVA第一期安排为第8话到第13话。 OVA第一期在2007年DVD-BOX中的话数安排如下： 話数 标题 発売日 Adventure 8 「愚者」のイギーと「ゲブ神」のンドゥール -前編- 1993年11月19日（VHS、LD） 2002年8月23日（DVD） Adventure 9 「愚者」のイギーと「ゲブ神」のンドゥール -後編- 1993年12月17日（VHS、LD） 2002年8月23日（DVD） Adventure 10 ダービー・ザ・ギャンブラー 1994年7月21日（VHS、LD） 2002年9月20日（DVD） Adventure 11 DIOの世界 -亜空の瘴気ヴァニラ・アイス- 1994年8月9日（VHS、LD） 2002年9月20日（DVD） Adventure 12 DIOの世界 -花京院 結界の死闘- 1994年10月21日（VHS、LD） 2002年10月25日（DVD） Adventure 13 DIOの世界 -さらば友よ- 1994年11月18日（VHS、LD） 2002年10月25日（DVD）",
     "directors": [
-      "导演 :平牧大辅,"
+      "北久保弘之,二村秀树,古濑登,"
     ],
+    "duration": "35分钟",
     "genres": [
-      "类型 :悬疑,推理,日本动漫,奇幻,剧情,漫画改,日漫番,2023年04月,TV番,情,日漫番剧,番剧,日漫,TV番剧,"
+      "1993",
+      "日本",
+      "动画,奇幻,"
     ],
-    "id": "/search/year/2023.html",
-    "rating": "9.5",
-    "ratingCount": "4次评分",
-    "status": "完结 2023 日本",
-    "titleCn": "我推的孩子"
+    "screenwriters": [
+      "北久保弘之,荒木飞吕彦,今敏,"
+    ],
+    "titleCn": "JOJO的奇妙冒险",
+    "totalEpisode": 13
   },
   "sources": [
     {
       "episodes": [
         {
-          "id": "/play/MFxCCS-1-1.html",
+          "id": "/vodwatch/1993743391/ep1.html",
           "title": "第01集"
         },
         {
-          "id": "/play/MFxCCS-1-2.html",
+          "id": "/vodwatch/1993743391/ep2.html",
           "title": "第02集"
         },
         {
-          "id": "/play/MFxCCS-1-3.html",
+          "id": "/vodwatch/1993743391/ep3.html",
           "title": "第03集"
         },
         {
-          "id": "/play/MFxCCS-1-4.html",
+          "id": "/vodwatch/1993743391/ep4.html",
           "title": "第04集"
         },
         {
-          "id": "/play/MFxCCS-1-5.html",
+          "id": "/vodwatch/1993743391/ep5.html",
           "title": "第05集"
         },
         {
-          "id": "/play/MFxCCS-1-6.html",
+          "id": "/vodwatch/1993743391/ep6.html",
           "title": "第06集"
         },
         {
-          "id": "/play/MFxCCS-1-7.html",
+          "id": "/vodwatch/1993743391/ep7.html",
           "title": "第07集"
         },
         {
-          "id": "/play/MFxCCS-1-8.html",
+          "id": "/vodwatch/1993743391/ep8.html",
           "title": "第08集"
         },
         {
-          "id": "/play/MFxCCS-1-9.html",
+          "id": "/vodwatch/1993743391/ep9.html",
           "title": "第09集"
         },
         {
-          "id": "/play/MFxCCS-1-10.html",
+          "id": "/vodwatch/1993743391/ep10.html",
           "title": "第10集"
         },
         {
-          "id": "/play/MFxCCS-1-11.html",
+          "id": "/vodwatch/1993743391/ep11.html",
           "title": "第11集"
-        }
-      ]
-    },
-    {
-      "episodes": [
-        {
-          "id": "/play/MFxCCS-5-1.html",
-          "title": "第01集"
         },
         {
-          "id": "/play/MFxCCS-5-2.html",
-          "title": "第02集"
+          "id": "/vodwatch/1993743391/ep12.html",
+          "title": "第12集"
         },
         {
-          "id": "/play/MFxCCS-5-3.html",
-          "title": "第03集"
-        },
-        {
-          "id": "/play/MFxCCS-5-4.html",
-          "title": "第04集"
-        },
-        {
-          "id": "/play/MFxCCS-5-5.html",
-          "title": "第05集"
-        },
-        {
-          "id": "/play/MFxCCS-5-6.html",
-          "title": "第06集"
-        },
-        {
-          "id": "/play/MFxCCS-5-7.html",
-          "title": "第07集"
-        },
-        {
-          "id": "/play/MFxCCS-5-8.html",
-          "title": "第08集"
-        },
-        {
-          "id": "/play/MFxCCS-5-9.html",
-          "title": "第09集"
-        },
-        {
-          "id": "/play/MFxCCS-5-10.html",
-          "title": "第10集"
-        },
-        {
-          "id": "/play/MFxCCS-5-11.html",
-          "title": "第11集"
-        }
-      ]
-    },
-    {
-      "episodes": [
-        {
-          "id": "/play/MFxCCS-4-1.html",
-          "title": "第01集"
-        },
-        {
-          "id": "/play/MFxCCS-4-2.html",
-          "title": "第02集"
-        },
-        {
-          "id": "/play/MFxCCS-4-3.html",
-          "title": "第03集"
-        },
-        {
-          "id": "/play/MFxCCS-4-4.html",
-          "title": "第04集"
-        },
-        {
-          "id": "/play/MFxCCS-4-5.html",
-          "title": "第05集"
-        },
-        {
-          "id": "/play/MFxCCS-4-6.html",
-          "title": "第06集"
-        },
-        {
-          "id": "/play/MFxCCS-4-7.html",
-          "title": "第07集"
-        },
-        {
-          "id": "/play/MFxCCS-4-8.html",
-          "title": "第08集"
-        },
-        {
-          "id": "/play/MFxCCS-4-9.html",
-          "title": "第09集"
-        },
-        {
-          "id": "/play/MFxCCS-4-10.html",
-          "title": "第10集"
-        },
-        {
-          "id": "/play/MFxCCS-4-11.html",
-          "title": "第11集"
-        }
-      ]
-    },
-    {
-      "episodes": [
-        {
-          "id": "/play/MFxCCS-3-1.html",
-          "title": "第01集"
-        },
-        {
-          "id": "/play/MFxCCS-3-2.html",
-          "title": "第02集"
-        },
-        {
-          "id": "/play/MFxCCS-3-3.html",
-          "title": "第03集"
-        },
-        {
-          "id": "/play/MFxCCS-3-4.html",
-          "title": "第04集"
-        },
-        {
-          "id": "/play/MFxCCS-3-5.html",
-          "title": "第05集"
-        },
-        {
-          "id": "/play/MFxCCS-3-6.html",
-          "title": "第06集"
-        },
-        {
-          "id": "/play/MFxCCS-3-7.html",
-          "title": "第07集"
-        },
-        {
-          "id": "/play/MFxCCS-3-8.html",
-          "title": "第08集"
-        },
-        {
-          "id": "/play/MFxCCS-3-9.html",
-          "title": "第09集"
-        },
-        {
-          "id": "/play/MFxCCS-3-10.html",
-          "title": "第10集"
-        },
-        {
-          "id": "/play/MFxCCS-3-11.html",
-          "title": "第11集"
+          "id": "/vodwatch/1993743391/ep13.html",
+          "title": "第13集"
         }
       ]
     }

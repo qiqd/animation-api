@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.animation.entity.*;
 import org.animation.service.HtmlParser;
+import org.animation.util.StringUtil;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -92,16 +93,16 @@ public class AAFun implements HtmlParser, Serializable {
     Elements actorElements = document.select(".hl-vod-data .hl-col-xs-12").eq(2);
     if (!actorElements.isEmpty()) {
       Elements actor = actorElements.select("a");
-      List<String> actors = actor.stream().map(Element::text).toList();
-      animation.setActors(actors);
+      String actors = actor.text();
+      animation.setActor(StringUtil.removeUnusedChar(actors));
     }
 
 // 解析导演
     Elements directorElements = document.select(".hl-vod-data .hl-col-xs-12").eq(3);
     if (!directorElements.isEmpty()) {
       Elements directorLinks = directorElements.select("a");
-      List<String> directors = directorLinks.stream().map(Element::text).toList();
-      animation.setDirectors(directors);
+      String directors = directorLinks.text();
+      animation.setDirector(StringUtil.removeUnusedChar(directors));
     }
 
 // 解析年份
@@ -118,8 +119,8 @@ public class AAFun implements HtmlParser, Serializable {
     if (typeElements.size() > 2) {
       Element typeElement = typeElements.get(2);
       Elements typeLinks = typeElement.select("a");
-      List<String> genres = typeLinks.stream().map(Element::text).toList();
-      animation.setGenres(genres);
+      String genres = typeLinks.text();
+      animation.setGenre(StringUtil.removeUnusedChar(genres));
     }
 
 // 解析上映时间

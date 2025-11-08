@@ -43,17 +43,17 @@ public class Animation implements Serializable {
   /**
    * 导演信息
    */
-  private List<String> directors;
+  private String director;
 
   /**
    * 主演信息
    */
-  private List<String> actors;
+  private String actor;
 
   /**
    * 动画类型/分类
    */
-  private List<String> genres;
+  private String genre;
 
   /**
    * 首播日期
@@ -102,9 +102,17 @@ public class Animation implements Serializable {
   /**
    * 角色列表
    */
-  private List<String> roles;
+  private String role;
   /**
    * 语言
    */
   private String language;
+  /**
+   * 编剧
+   */
+  private String screenwriter;
+  /**
+   * 片长
+   */
+  private String duration;
 }

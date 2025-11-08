@@ -2,6 +2,7 @@ package org.animation.service.impl;
 
 import org.animation.entity.*;
 import org.animation.service.HtmlParser;
+import org.animation.util.StringUtil;
 import org.animation.util.UnicodeUtils;
 import org.jetbrains.annotations.Nullable;
 import org.jsoup.Jsoup;
@@ -119,9 +120,9 @@ public class AiyiFan implements HtmlParser, Serializable {
     animation.setTitleCn(titleCN);
     animation.setCoverUrls(List.of(cover));
     animation.setStatus(status);
-    animation.setGenres(List.of(genre));
-    animation.setActors(List.of(actor));
-    animation.setDirectors(List.of(director));
+    animation.setGenre(StringUtil.removeUnusedChar(genre));
+    animation.setActor(StringUtil.removeUnusedChar(actor));
+    animation.setDirector(StringUtil.removeUnusedChar(director));
     animation.setCountry(country);
     return animation;
   }

@@ -27,9 +27,9 @@ public class Mwcy implements HtmlParser, Serializable {
     animation.setId(id);
     animation.setTitleCn(titleCn);
     animation.setCoverUrls(List.of(covet));
-    animation.setDirectors(List.of(director));
-    animation.setActors(List.of(actor));
-    animation.setGenres(List.of(genre));
+    animation.setDirector(director);
+    animation.setActor(actor);
+    animation.setGenre(genre);
     return animation;
   }
 
@@ -41,9 +41,9 @@ public class Mwcy implements HtmlParser, Serializable {
     String id = infoBox.select("a").attr("href");
     Elements infoItem = infoBox.select("div.slide-info.hide");
     String status = infoItem.get(0).text();
-    String director = infoItem.get(1).text();
-    String actor = infoItem.get(2).text();
-    String genre = infoItem.get(3).text();
+    String director = infoItem.get(1).text().substring(4);
+    String actor = infoItem.get(2).text().substring(4);
+    String genre = infoItem.get(3).text().substring(4);
     Animation animation = fillAnimation(titleCn, covet, id, director, actor, genre);
     animation.setStatus(status);
     return animation;
