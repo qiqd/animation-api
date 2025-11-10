@@ -1,0 +1,22 @@
+package org.anime.util;
+
+import org.anime.api.AnimeApi;
+import org.anime.parser.HtmlParser;
+import org.junit.Test;
+
+import java.util.HashMap;
+
+public class AnimeApiTest {
+  @Test
+  public void testDecryptVideoUrl() throws Exception {
+    HashMap<String, HtmlParser> htmlParserMap = AnimeApi.SOURCE_MAP;
+    for (String s : htmlParserMap.keySet()) {
+      long start = System.currentTimeMillis();
+      System.out.println(s);
+      System.out.println(htmlParserMap.get(s).fetchSearchSync("租借女友", 1, 10));
+      System.out.println("耗时：" + (System.currentTimeMillis() - start) + "ms");
+      System.out.println("\r\n");
+    }
+  }
+
+}

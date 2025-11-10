@@ -1,84 +1,35 @@
-{
-  "animation": {
-    "actors": [
-      "小杉十郎太,大塚周夫,小林清志,铃置洋孝,森功至,"
-    ],
-    "ariDate": "1993-11-19(日本)",
+[
+  {
+    "actor": "細田直人,平山英嗣,松本浩樹（スタジオ・イースター）,笠井美枝,",
     "coverUrls": [
-      "https://senfun.in//pic/cover/1993743391.jpg"
+      "https://img.pan.kg/images/76194_TiZTz.webp"
     ],
-    "description": "《JoJo的奇妙冒险OVA第一期》(1993年-1994年，共6话)是根据原作漫画第三部后半部分改编的动画作品，描述发生在埃及的战斗。另外，第二期OVA(2000年-2002年，共7话)改编的是原作漫画第三部前半部分的内容。 2007年5月25日发售的《JoJo的奇妙冒险 第3部 星尘斗士 DVD-BOX》(共13话)收录了OVA第一期和第二期的全部内容，并按故事发生的时间先后顺序，把OVA第一期安排为第8话到第13话。 OVA第一期在2007年DVD-BOX中的话数安排如下： 話数 标题 発売日 Adventure 8 「愚者」のイギーと「ゲブ神」のンドゥール -前編- 1993年11月19日（VHS、LD） 2002年8月23日（DVD） Adventure 9 「愚者」のイギーと「ゲブ神」のンドゥール -後編- 1993年12月17日（VHS、LD） 2002年8月23日（DVD） Adventure 10 ダービー・ザ・ギャンブラー 1994年7月21日（VHS、LD） 2002年9月20日（DVD） Adventure 11 DIOの世界 -亜空の瘴気ヴァニラ・アイス- 1994年8月9日（VHS、LD） 2002年9月20日（DVD） Adventure 12 DIOの世界 -花京院 結界の死闘- 1994年10月21日（VHS、LD） 2002年10月25日（DVD） Adventure 13 DIOの世界 -さらば友よ- 1994年11月18日（VHS、LD） 2002年10月25日（DVD）",
-    "directors": [
-      "北久保弘之,二村秀树,古濑登,"
-    ],
-    "duration": "35分钟",
-    "genres": [
-      "1993",
-      "日本",
-      "动画,奇幻,"
-    ],
-    "screenwriters": [
-      "北久保弘之,荒木飞吕彦,今敏,"
-    ],
-    "titleCn": "JOJO的奇妙冒险",
-    "totalEpisode": 13
+    "description": "讲述了在三周目的世界，我妻由乃取回了记忆，前去迎接天野雪辉期间所发生的事情。",
+    "genre": "番剧·2013·日本·OVA未来日记病娇2013年7月細田直人,平山英嗣,松本浩樹（スタジオ・イースター）,笠井美枝,",
+    "id": "/feng-n/lnCCCS.html",
+    "status": "已完结",
+    "titleCn": "未来日记Redial"
   },
-  "sources": [
-    {
-      "episodes": [
-        {
-          "id": "/vodwatch/1993743391/ep1.html",
-          "title": "第01集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep2.html",
-          "title": "第02集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep3.html",
-          "title": "第03集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep4.html",
-          "title": "第04集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep5.html",
-          "title": "第05集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep6.html",
-          "title": "第06集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep7.html",
-          "title": "第07集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep8.html",
-          "title": "第08集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep9.html",
-          "title": "第09集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep10.html",
-          "title": "第10集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep11.html",
-          "title": "第11集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep12.html",
-          "title": "第12集"
-        },
-        {
-          "id": "/vodwatch/1993743391/ep13.html",
-          "title": "第13集"
-        }
-      ]
-    }
-  ]
-}
+  {
+    "actor": "細田直人,平山英嗣,",
+    "coverUrls": [
+      "https://img.pan.kg/images/18299_JrK2e.webp"
+    ],
+    "description": "单行本第11卷限定版同捆OAD",
+    "genre": "番剧·2010·日本·OAD未来日记OVA我妻由乃細田直人,平山英嗣,",
+    "id": "/feng-n/XrCCCS.html",
+    "status": "已完结",
+    "titleCn": "未来日记 OAD"
+  },
+  {
+    "actor": "細田直人,,",
+    "coverUrls": [
+      "https://img.pan.kg/images/16235_5GJQH.webp"
+    ],
+    "description": "国中二年级学生天野雪辉习惯远离所有人，以一个旁观者的角度把亲眼所见的事记录在自己的手机中。一天，时空之神宙斯把未来日记植入他的手机中，这日记记录的是他未来90天发生的事，包括考试内容、遇到的危险等。但",
+    "genre": "番剧·2011·日本·病娇未来日记我妻由乃2011年10月細田直人,,",
+    "id": "/feng-n/7RCCCS.html",
+    "status": "已完结",
+    "titleCn": "未来日记"
+  }
+]
