@@ -3,6 +3,7 @@ package org.anime.entity.base;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.anime.util.StringUtil;
 
 import java.io.Serializable;
 import java.util.List;
@@ -66,4 +67,8 @@ public class Media implements Serializable {
    * 来源网站URL
    */
   private String sourceUrl;
+
+  public String getGenre() {
+    return StringUtil.removeUnusedChar(genre);
+  }
 }

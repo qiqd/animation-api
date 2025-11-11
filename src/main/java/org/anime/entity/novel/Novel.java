@@ -20,4 +20,5 @@ public class Novel extends Media implements Serializable {
   private String chapters;
   private String wordCount;
   private String volume;
+  private String latestChapter;
 }

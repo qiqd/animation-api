@@ -44,12 +44,12 @@ public interface HtmlParser extends Serializable {
   /**
    * 解析详情信息
    *
-   * @param videoId 视频ID
+   * @param mediaId 媒体ID
    * @return AnimeDetail
    * @throws Exception 解析异常
    */
   @Nullable
-  Detail<? extends Media> fetchDetailSync(String videoId) throws Exception;
+  Detail<? extends Media> fetchDetailSync(String mediaId) throws Exception;
 
   /**
    * 解析播放信息
