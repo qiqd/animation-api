@@ -20,7 +20,7 @@ public class MwcyTest extends TestCase {
     System.out.println(JSON.toJSONString(mwcy.fetchDetailSync("/bangumi/MFxCCS.html")));
   }
 
-  public void testFetchPlayInfoSync() throws Exception {
-    System.out.println(JSON.toJSONString(mwcy.fetchPlayInfoSync("/play/MFxCCS-1-1.html")));
+  public void testFetchViewSync() throws Exception {
+    System.out.println(JSON.toJSONString(mwcy.fetchViewSync("/play/MFxCCS-1-1.html")));
   }
 }

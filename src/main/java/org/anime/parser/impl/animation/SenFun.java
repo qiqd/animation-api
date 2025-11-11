@@ -2,7 +2,12 @@ package org.anime.parser.impl.animation;
 
 import com.alibaba.fastjson.JSON;
 import lombok.Data;
-import org.anime.entity.animation.*;
+import org.anime.entity.animation.Animation;
+import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
 import org.anime.parser.HtmlParser;
@@ -84,7 +89,7 @@ public class SenFun implements HtmlParser, Serializable {
 
   @Override
   @Nullable
-  public AnimationDetail fetchDetailSync(String videoId) throws Exception {
+  public Detail<Animation> fetchDetailSync(String videoId) throws Exception {
     Element doc = HttpUtil.createConnection(BASE_URL + videoId).get().body();
     //获取播放源
     List<Source> sources = doc.select("div.module-play-list-content.module-play-list-base").stream().map(SenFun::parseSource).collect(Collectors.toList());
@@ -117,12 +122,12 @@ public class SenFun implements HtmlParser, Serializable {
     animation.setAriDate(airDate);
     animation.setDuration(duration);
     animation.setTotalEpisode(Integer.parseInt(totalEpisode));
-    return new AnimationDetail(animation, sources);
+    return new Detail<>(animation, sources);
   }
 
   @Override
   @Nullable
-  public PlayInfo fetchPlayInfoSync(String episodeId) throws Exception {
+  public ViewInfo fetchViewSync(String episodeId) throws Exception {
     Element doc = HttpUtil.createConnection(BASE_URL + episodeId).get().body();
     List<Element> script = doc.select("script[type='text/javascript']").stream().filter(item -> item.data().contains("$(document).ready (function (argument)")).collect(Collectors.toList());
     if (script.isEmpty()) {
@@ -132,7 +137,6 @@ public class SenFun implements HtmlParser, Serializable {
     Pattern pattern = Pattern.compile("url\\s*:\\s*\"([^\"]+)\"");
     Matcher matcher = pattern.matcher(script.get(0).data());
 
-    PlayInfo playInfo = new PlayInfo();
     if (!matcher.find()) {
       log.error("未找到播放url, episodeId: {}", episodeId);
       return null;
@@ -142,9 +146,7 @@ public class SenFun implements HtmlParser, Serializable {
     String body = connect.execute().body();
     Response response = JSON.parseObject(body, Response.class);
     String realPlayUrl = response.getVideo_plays().get(0).get("play_data");
-    playInfo.setPlayUri(realPlayUrl);
-    playInfo.setId(episodeId);
-    return playInfo;
+    return new ViewInfo(null, episodeId, Collections.singletonList(realPlayUrl));
   }
 
   @Override

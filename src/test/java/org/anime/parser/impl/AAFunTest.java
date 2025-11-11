@@ -2,8 +2,8 @@ package org.anime.parser.impl;
 
 import com.alibaba.fastjson.JSON;
 import org.anime.entity.animation.Animation;
-import org.anime.entity.animation.AnimationDetail;
-import org.anime.entity.animation.PlayInfo;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.ViewInfo;
 import org.anime.parser.impl.animation.AAFun;
 import org.junit.Test;
 
@@ -25,13 +25,13 @@ public class AAFunTest {
 
   @Test
   public void fetchDetailSync() throws Exception {
-    AnimationDetail animationDetail = aaFun.fetchDetailSync("/feng-n/7RCCCS.html");
+    Detail<Animation> animationDetail = aaFun.fetchDetailSync("/feng-n/7RCCCS.html");
     System.out.printf(JSON.toJSONString(animationDetail));
   }
 
   @Test
-  public void fetchPlayInfoSync() throws Exception {
-    PlayInfo playInfo = aaFun.fetchPlayInfoSync("/f/ymCCCS-1-1.html");
+  public void fetchViewSync() throws Exception {
+    ViewInfo playInfo = aaFun.fetchViewSync("/f/ymCCCS-1-1.html");
     System.out.println(JSON.toJSONString(playInfo));
   }
 }

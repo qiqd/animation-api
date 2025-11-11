@@ -1,7 +1,13 @@
 package org.anime.parser.impl.animation;
 
 import com.alibaba.fastjson.JSON;
-import org.anime.entity.animation.*;
+import org.anime.entity.animation.Animation;
+import org.anime.entity.animation.PlayerData;
+import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
 import org.anime.parser.HtmlParser;
@@ -67,7 +73,7 @@ public class AAFun implements HtmlParser, Serializable {
 
   @Override
   @Nullable
-  public AnimationDetail fetchDetailSync(String videoId) throws Exception {
+  public Detail<Animation> fetchDetailSync(String videoId) throws Exception {
     Element document = HttpUtil.createConnection(BASEURL + videoId).get().body();
     Elements div = document.select("div.hl-tabs-box");
     List<Source> sources = div.stream().map(item -> {
@@ -159,13 +165,13 @@ public class AAFun implements HtmlParser, Serializable {
       String rating = ratingElements.get(0).text();
       animation.setRating(rating);
     }
-    return new AnimationDetail(animation, sources);
+    return new Detail<>(animation, sources);
   }
 
 
   @Override
   @Nullable
-  public PlayInfo fetchPlayInfoSync(String episodeId) throws Exception {
+  public ViewInfo fetchViewSync(String episodeId) throws Exception {
     Element body = HttpUtil.createConnection(BASEURL + episodeId).get().body();
     Elements script = body.select("script[type='text/javascript']");
     if (script.isEmpty()) {
@@ -211,7 +217,7 @@ public class AAFun implements HtmlParser, Serializable {
     }
     String videoUrl = decryptAES(encryptedUrl, sessionKey);
     String currentUrl = videoUrl.replaceFirst("http://", "https://");
-    return new PlayInfo(episodeId, currentUrl);
+    return new ViewInfo(null, episodeId, Collections.singletonList(currentUrl));
   }
 
   @Override

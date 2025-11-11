@@ -1,4 +1,4 @@
-package org.anime.entity.animation;
+package org.anime.entity.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlayInfo implements Serializable {
+public class Episode implements Serializable {
   private String id;
-  private String playUri;
+  private String title;
 }

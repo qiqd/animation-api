@@ -19,7 +19,7 @@ public class AiyiFanTest extends TestCase {
     System.out.println(JSON.toJSONString(aiyiFan.fetchDetailSync("/ayf.sbs-vod/54456.html")));
   }
 
-  public void testFetchPlayInfoSync() throws Exception {
-    System.out.println(JSON.toJSONString(aiyiFan.fetchPlayInfoSync("/ayf.sbs-play/54456-1-1.html")));
+  public void testFetchViewSync() throws Exception {
+    System.out.println(JSON.toJSONString(aiyiFan.fetchViewSync("/ayf.sbs-play/54456-1-1.html")));
   }
 }

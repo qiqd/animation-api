@@ -3,8 +3,8 @@ package org.anime.parser.impl;
 import com.alibaba.fastjson.JSON;
 import junit.framework.TestCase;
 import org.anime.entity.animation.Animation;
-import org.anime.entity.animation.AnimationDetail;
-import org.anime.entity.animation.PlayInfo;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.ViewInfo;
 import org.anime.parser.impl.animation.GirigiriLove;
 
 import java.util.List;
@@ -23,12 +23,12 @@ public class GirigiriLoveTest extends TestCase {
    * @throws Exception
    */
   public void testFetchDetailSync() throws Exception {
-    AnimationDetail animationDetail = girigiriLove.fetchDetailSync("/GV765/");
+    Detail<Animation> animationDetail = girigiriLove.fetchDetailSync("/GV765/");
     System.out.println(JSON.toJSONString(animationDetail));
   }
 
-  public void testFetchPlayInfoSync() throws Exception {
-    PlayInfo playInfo = girigiriLove.fetchPlayInfoSync("/playGV765-1-1/");
+  public void testFetchViewSync() throws Exception {
+    ViewInfo playInfo = girigiriLove.fetchViewSync("/playGV765-1-1/");
     System.out.println(JSON.toJSONString(playInfo));
   }
 }

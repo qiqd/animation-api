@@ -1,6 +1,11 @@
 package org.anime.parser.impl.animation;
 
-import org.anime.entity.animation.*;
+import org.anime.entity.animation.Animation;
+import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
 import org.anime.parser.HtmlParser;
@@ -95,7 +100,7 @@ public class AiyiFan implements HtmlParser, Serializable {
 
   @Override
   @Nullable
-  public AnimationDetail fetchDetailSync(String videoId) throws Exception {
+  public Detail<Animation> fetchDetailSync(String videoId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + videoId).get().body();
     Elements playSource = doc.select("div.playlist-mobile ul.clearfix");
     List<Source> sources = playSource.stream().map(item -> {
@@ -130,16 +135,13 @@ public class AiyiFan implements HtmlParser, Serializable {
     animation.setLanguage(language);
     animation.setAriDate(ariDate);
     animation.setDescription(description);
-    AnimationDetail animationDetail = new AnimationDetail();
-    animationDetail.setAnimation(animation);
-    animationDetail.setSources(sources);
-    return animationDetail;
+    return new Detail<>(animation, sources);
   }
 
 
   @Override
   @Nullable
-  public PlayInfo fetchPlayInfoSync(String episodeId) throws Exception {
+  public ViewInfo fetchViewSync(String episodeId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + episodeId).get().body();
     List<Element> playerAaaa = doc.select("script[type='text/javascript']").stream().filter(item -> item.data().contains("player_aaaa")).collect(Collectors.toList());
     String playData = playerAaaa.get(0).data();
@@ -147,10 +149,7 @@ public class AiyiFan implements HtmlParser, Serializable {
     Matcher matcher = pattern.matcher(playData);
     if (matcher.find()) {
       String playUri = matcher.group(1).replaceAll("\\\\", "");
-      PlayInfo playInfo = new PlayInfo();
-      playInfo.setId(episodeId);
-      playInfo.setPlayUri(UnicodeUtils.decodeUnicode(playUri));
-      return playInfo;
+      return new ViewInfo(null, episodeId, Collections.singletonList(UnicodeUtils.decodeUnicode(playUri)));
     }
     return null;
   }

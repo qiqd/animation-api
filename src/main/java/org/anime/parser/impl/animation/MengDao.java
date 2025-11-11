@@ -1,6 +1,11 @@
 package org.anime.parser.impl.animation;
 
-import org.anime.entity.animation.*;
+import org.anime.entity.animation.Animation;
+import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
 import org.anime.parser.HtmlParser;
@@ -70,7 +75,7 @@ public class MengDao implements HtmlParser, Serializable {
 
   @Override
   @Nullable
-  public AnimationDetail fetchDetailSync(String videoId) throws Exception {
+  public Detail<Animation> fetchDetailSync(String videoId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + videoId).get().body();
     Elements episodeBox = doc.select("div.plist.clearfix");
     List<Source> sources = episodeBox.stream().map(item -> {
@@ -114,12 +119,12 @@ public class MengDao implements HtmlParser, Serializable {
     animation.setActor(StringUtil.removeUnusedChar(cast).substring(3));
     animation.setRole(StringUtil.removeUnusedChar(role).substring(3));
     animation.setTitleEn(otherName.substring(3).trim());
-    return new AnimationDetail(animation, sources);
+    return new Detail<>(animation, sources);
   }
 
   @Override
   @Nullable
-  public PlayInfo fetchPlayInfoSync(String episodeId) throws Exception {
+  public ViewInfo fetchViewSync(String episodeId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + episodeId).get().body();
     List<Element> scripts = doc.select("script").stream().filter(item -> item.data().contains("base64decode")).collect(Collectors.toList());
     if (scripts.isEmpty()) {
@@ -162,10 +167,7 @@ public class MengDao implements HtmlParser, Serializable {
     String result = new String(validData, StandardCharsets.UTF_8);
     VideoData videoData = parseVideoData(result);
     String currentVideoUrl = getCurrentVideoUrl(videoData, BASEURL + episodeId);
-    PlayInfo playInfo = new PlayInfo();
-    playInfo.setId(episodeId);
-    playInfo.setPlayUri(currentVideoUrl);
-    return playInfo;
+    return new ViewInfo(null, episodeId, Collections.singletonList(currentVideoUrl));
   }
 
   @Override

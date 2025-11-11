@@ -1,9 +1,9 @@
 package org.anime.parser;
 
-import org.anime.entity.animation.Animation;
-import org.anime.entity.animation.AnimationDetail;
-import org.anime.entity.animation.PlayInfo;
 import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Media;
+import org.anime.entity.base.ViewInfo;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
@@ -39,7 +39,7 @@ public interface HtmlParser extends Serializable {
    * @throws Exception 解析异常
    */
 
-  List<Animation> fetchSearchSync(String keyword, Integer page, Integer size) throws Exception;
+  List<? extends Media> fetchSearchSync(String keyword, Integer page, Integer size) throws Exception;
 
   /**
    * 解析详情信息
@@ -49,7 +49,7 @@ public interface HtmlParser extends Serializable {
    * @throws Exception 解析异常
    */
   @Nullable
-  AnimationDetail fetchDetailSync(String videoId) throws Exception;
+  Detail<? extends Media> fetchDetailSync(String videoId) throws Exception;
 
   /**
    * 解析播放信息
@@ -59,7 +59,7 @@ public interface HtmlParser extends Serializable {
    * @throws Exception 解析异常
    */
   @Nullable
-  PlayInfo fetchPlayInfoSync(String episodeId) throws Exception;
+  ViewInfo fetchViewSync(String episodeId) throws Exception;
 
   /**
    * 解析推荐列表

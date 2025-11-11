@@ -1,13 +1,14 @@
 package org.anime.parser.impl.comic;
 
 import org.anime.entity.animation.Schedule;
-import org.anime.entity.comic.Chapter;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.entity.comic.Comic;
-import org.anime.entity.comic.ComicDetail;
-import org.anime.entity.comic.ComicPage;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
-import org.anime.parser.ComicParser;
+import org.anime.parser.HtmlParser;
 import org.anime.util.HttpUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jsoup.nodes.Element;
@@ -18,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Baozi implements ComicParser, Serializable {
+public class Baozi implements HtmlParser, Serializable {
   private static final Logger log = LoggerFactory.getLogger(Baozi.class);
   public static final String NAME = "包子漫画";
   public static final String LOGOURL = "https://static-tw.baozimhcn.com/static/bzmh/img/favicon-96x96.png";
@@ -63,7 +64,7 @@ public class Baozi implements ComicParser, Serializable {
 
   @Nullable
   @Override
-  public ComicDetail fetchDetailSync(String comicId) throws Exception {
+  public Detail<Comic> fetchDetailSync(String comicId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + comicId).get().body();
     Elements chapter1 = doc.select("div#chapter-items");
     Elements chapter2 = doc.select("div#chapters_other_list");
@@ -71,15 +72,15 @@ public class Baozi implements ComicParser, Serializable {
       log.error("No chapter found for comicId: {}", comicId);
       return null;
     }
-    List<Chapter> result1 = chapter1.select("div.comics-chapters").stream().map(item -> {
+    List<Episode> result1 = chapter1.select("div.comics-chapters").stream().map(item -> {
       String id = item.select("a").attr("href");
       String title = item.select("a span").text();
-      return new Chapter(id, title);
+      return new Episode(id, title);
     }).collect(Collectors.toList());
-    List<Chapter> result2 = chapter2.select("div.comics-chapters").stream().map(item -> {
+    List<Episode> result2 = chapter2.select("div.comics-chapters").stream().map(item -> {
       String id = item.select("a").attr("href");
       String title = item.select("a span").text();
-      return new Chapter(id, title);
+      return new Episode(id, title);
     }).collect(Collectors.toList());
     result1.addAll(result2);
     Elements infoBox = doc.select("div.pure-g.de-info__box");
@@ -89,7 +90,6 @@ public class Baozi implements ComicParser, Serializable {
     String description = infoBox.select("p.comics-detail__desc").text();
     String genre = infoBox.select("div.tag-list").text();
     String status = infoBox.select("div.supporting-text.mt-2 > div:last-child").text();
-    ComicDetail comicDetail = new ComicDetail();
     Comic comic = new Comic();
     comic.setId(comicId);
     comic.setTitle(title);
@@ -98,25 +98,19 @@ public class Baozi implements ComicParser, Serializable {
     comic.setGenre(genre);
     comic.setStatus(status);
     comic.setCoverUrls(Collections.singletonList(cover));
-    comicDetail.setComic(comic);
-    comicDetail.setChapters(result1);
-    return comicDetail;
+    return new Detail<>(comic, Collections.singletonList(new Source(0, "默认", result1)));
   }
 
   @Override
-  public List<ComicPage> fetchPageSync(String chapterId, Integer pageNumber) throws Exception {
+  public ViewInfo fetchViewSync(String chapterId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + chapterId).get().body();
     Elements comicPages = doc.select("ul.comic-contain div");
-    return comicPages.stream().skip(1).filter(item -> item.html().contains("amp-img")).map(page -> {
+    List<String> urls = comicPages.stream().skip(1).filter(item -> item.html().contains("amp-img")).map(page -> {
       Elements image = page.select("noscript img");
-      String imageUrl = image.attr("src");
-      String title = image.attr("alt");
-      ComicPage comicPage = new ComicPage();
-      comicPage.setImageUrl(imageUrl);
-      comicPage.setTitle(title);
-      comicPage.setChapterId(chapterId);
-      return comicPage;
+      //      title = image.attr("alt");
+      return image.attr("src");
     }).collect(Collectors.toList());
+    return new ViewInfo(null, chapterId, urls);
   }
 
 

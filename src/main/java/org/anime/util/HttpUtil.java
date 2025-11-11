@@ -27,4 +27,9 @@ public class HttpUtil implements Serializable {
             .timeout(20000); // 20秒超时
   }
 
+  public static Connection createConnection(String url, String referer) {
+    return createConnection(url)
+            .header("Referer", referer);
+  }
+
 }

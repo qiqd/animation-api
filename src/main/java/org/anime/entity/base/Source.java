@@ -1,4 +1,4 @@
-package org.anime.entity.animation;
+package org.anime.entity.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

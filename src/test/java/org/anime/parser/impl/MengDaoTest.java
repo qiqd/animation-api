@@ -3,8 +3,8 @@ package org.anime.parser.impl;
 import com.alibaba.fastjson.JSON;
 import junit.framework.TestCase;
 import org.anime.entity.animation.Animation;
-import org.anime.entity.animation.AnimationDetail;
-import org.anime.entity.animation.PlayInfo;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.ViewInfo;
 import org.anime.parser.impl.animation.MengDao;
 
 import java.util.List;
@@ -18,12 +18,12 @@ public class MengDaoTest extends TestCase {
   }
 
   public void testFetchDetailSync() throws Exception {
-    AnimationDetail animationDetail = mengDao.fetchDetailSync("/man/99232.html");
+    Detail<Animation> animationDetail = mengDao.fetchDetailSync("/man/99232.html");
     System.out.println(JSON.toJSONString(animationDetail));
   }
 
-  public void testFetchPlayInfoSync() throws Exception {
-    PlayInfo playInfo = mengDao.fetchPlayInfoSync("/man_v/9232-0-0.html");
+  public void testFetchViewSync() throws Exception {
+    ViewInfo playInfo = mengDao.fetchViewSync("/man_v/9232-0-0.html");
     System.out.println(JSON.toJSONString(playInfo));
   }
 }

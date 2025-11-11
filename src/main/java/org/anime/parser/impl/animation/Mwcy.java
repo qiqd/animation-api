@@ -1,6 +1,10 @@
 package org.anime.parser.impl.animation;
 
-import org.anime.entity.animation.*;
+import org.anime.entity.animation.Animation;
+import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
 import org.anime.parser.HtmlParser;
@@ -100,7 +104,7 @@ public class Mwcy implements HtmlParser, Serializable {
 
   @Override
   @Nullable
-  public AnimationDetail fetchDetailSync(String videoId) throws Exception {
+  public Detail<Animation> fetchDetailSync(String videoId) throws Exception {
     Element doc = HttpUtil.createConnection(BASE_URL + videoId).get().body();
     Elements elements = doc.select("div.anthology-list-box.none");
     if (elements.isEmpty()) {
@@ -115,13 +119,13 @@ public class Mwcy implements HtmlParser, Serializable {
     animation.setRating(rating);
     animation.setRatingCount(totalRating);
     animation.setDescription(introduction);
-    return new AnimationDetail(animation, sources);
+    return new Detail<>(animation, sources);
   }
 
 
   @Override
   @Nullable
-  public PlayInfo fetchPlayInfoSync(String episodeId) throws Exception {
+  public ViewInfo fetchViewSync(String episodeId) throws Exception {
     Element doc = HttpUtil.createConnection(BASE_URL + episodeId).get().body();
     List<Element> playerScript = doc.select("script").stream().filter(item -> item.data().contains("var player_aaaa")).collect(Collectors.toList());
     if (playerScript.isEmpty()) {
@@ -159,7 +163,7 @@ public class Mwcy implements HtmlParser, Serializable {
     String uid = matcher.group(1);
     url = url.replaceAll("\\\\/", "/");
     String s = this.decryptVideoUrl(url, uid);
-    return new PlayInfo(episodeId, s);
+    return new ViewInfo(null, episodeId, Collections.singletonList(s));
   }
 
   @Override

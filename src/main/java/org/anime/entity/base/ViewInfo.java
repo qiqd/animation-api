@@ -1,4 +1,4 @@
-package org.anime.entity.comic;
+package org.anime.entity.base;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ComicDetail implements Serializable {
-  private Comic comic;
-  private List<Chapter> chapters;
+public class ViewInfo implements Serializable {
+  private String episodeName;
+  private String episodeId;
+  private List<String> urls;
 }

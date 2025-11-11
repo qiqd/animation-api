@@ -1,7 +1,13 @@
 package org.anime.parser.impl.animation;
 
 import com.alibaba.fastjson.JSON;
-import org.anime.entity.animation.*;
+import org.anime.entity.animation.Animation;
+import org.anime.entity.animation.PlayerData;
+import org.anime.entity.animation.Schedule;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
 import org.anime.parser.HtmlParser;
@@ -76,7 +82,7 @@ public class GirigiriLove implements HtmlParser, Serializable {
 
   @Override
   @Nullable
-  public AnimationDetail fetchDetailSync(String videoId) throws Exception {
+  public Detail<Animation> fetchDetailSync(String videoId) throws Exception {
     Element body = HttpUtil.createConnection(BASEURL + videoId).get().body();
     Elements detailDiv = body.select("div.vod-detail.style-detail");
     if (detailDiv.isEmpty()) {
@@ -94,7 +100,6 @@ public class GirigiriLove implements HtmlParser, Serializable {
     String actor = String.join(",", slideInfo.size() > 2 ? slideInfo.get(2).select("a").eachText() : Collections.emptyList());
     String type = String.join("", detailDiv.select("a.deployment.none.cor5 span").eachText()).replaceAll("·", ",");
     String description = detailDiv.select("div#height_limit").text().replaceAll(BLANKREG, "");
-    AnimationDetail animationDetail = new AnimationDetail();
     Elements listBoxDiv = body.select("div.anthology-list-box.none");
     List<Source> sources = new ArrayList<>();
     for (Element element : listBoxDiv) {
@@ -119,14 +124,12 @@ public class GirigiriLove implements HtmlParser, Serializable {
     anime.setGenre(StringUtil.removeUnusedChar(type));
     anime.setStatus(status);
     anime.setDescription(description);
-    animationDetail.setAnimation(anime);
-    animationDetail.setSources(sources);
-    return animationDetail;
+    return new Detail<>(anime, sources);
   }
 
   @Override
   @Nullable
-  public PlayInfo fetchPlayInfoSync(String episodeId) throws Exception {
+  public ViewInfo fetchViewSync(String episodeId) throws Exception {
     Element body = HttpUtil.createConnection(BASEURL + episodeId).get().body();
     Elements scriptElements = body.getElementsByTag("script");
     String playerData = null;
@@ -142,12 +145,8 @@ public class GirigiriLove implements HtmlParser, Serializable {
       log.error("未找到播放信息, episodeId: {}", episodeId);
       return null;
     }
-    ;
     PlayerData player = JSON.parseObject(jsonStr, PlayerData.class);
-    PlayInfo playInfo = new PlayInfo();
-    playInfo.setId(episodeId);
-    playInfo.setPlayUri(decodeUrl(player.getUrl()));
-    return playInfo;
+    return new ViewInfo(null, episodeId, Collections.singletonList(decodeUrl(player.getUrl())));
   }
 
   @Override
