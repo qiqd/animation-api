@@ -1,7 +1,7 @@
 package org.anime.util;
 
-import org.anime.api.AnimeApi;
-import org.anime.parser.HtmlParser;
+import org.anime.api.AnimationApi;
+import org.anime.parser.AbstractAnimationParser;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 public class AnimeApiTest {
   @Test
   public void testDecryptVideoUrl() throws Exception {
-    HashMap<String, HtmlParser> htmlParserMap = AnimeApi.SOURCE_MAP;
+    HashMap<String, AbstractAnimationParser> htmlParserMap = AnimationApi.SOURCE_MAP;
     for (String s : htmlParserMap.keySet()) {
       long start = System.currentTimeMillis();
       System.out.println(s);

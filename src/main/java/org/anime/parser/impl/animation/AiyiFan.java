@@ -8,7 +8,7 @@ import org.anime.entity.base.Source;
 import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
-import org.anime.parser.HtmlParser;
+import org.anime.parser.AbstractAnimationParser;
 import org.anime.util.HttpUtil;
 import org.anime.util.StringUtil;
 import org.anime.util.UnicodeUtils;
@@ -16,7 +16,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,7 +23,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class AiyiFan implements HtmlParser, Serializable {
+public class AiyiFan extends AbstractAnimationParser {
   private static final Logger log = LoggerFactory.getLogger(AiyiFan.class);
   public static final String NAME = "爱壹番";
   public static final String LOGOURL = "https://www.aiyifan.sbs/static/images/logo.jpg";

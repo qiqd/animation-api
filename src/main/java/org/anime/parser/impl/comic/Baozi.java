@@ -8,18 +8,17 @@ import org.anime.entity.base.ViewInfo;
 import org.anime.entity.comic.Comic;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
-import org.anime.parser.HtmlParser;
+import org.anime.parser.AbstractComicParser;
 import org.anime.util.HttpUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Baozi implements HtmlParser, Serializable {
+public class Baozi extends AbstractComicParser {
   private static final Logger log = LoggerFactory.getLogger(Baozi.class);
   public static final String NAME = "包子漫画";
   public static final String LOGOURL = "https://static-tw.baozimhcn.com/static/bzmh/img/favicon-96x96.png";

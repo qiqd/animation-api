@@ -10,7 +10,7 @@ import org.anime.entity.base.Source;
 import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
-import org.anime.parser.HtmlParser;
+import org.anime.parser.AbstractAnimationParser;
 import org.anime.util.HttpUtil;
 import org.anime.util.StringUtil;
 import org.jetbrains.annotations.Nullable;
@@ -19,7 +19,6 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +27,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
-public class SenFun implements HtmlParser, Serializable {
+public class SenFun extends AbstractAnimationParser {
   private static final Logger log = LoggerFactory.getLogger(SenFun.class);
 
   public static final String NAME = "森之屋";

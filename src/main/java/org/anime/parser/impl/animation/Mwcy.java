@@ -7,7 +7,7 @@ import org.anime.entity.base.Source;
 import org.anime.entity.base.ViewInfo;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
-import org.anime.parser.HtmlParser;
+import org.anime.parser.AbstractAnimationParser;
 import org.anime.util.HttpUtil;
 import org.anime.util.StringUtil;
 import org.jetbrains.annotations.Nullable;
@@ -18,7 +18,6 @@ import org.jsoup.select.Elements;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Collections;
@@ -27,7 +26,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class Mwcy implements HtmlParser, Serializable {
+public class Mwcy extends AbstractAnimationParser {
   private static final Logger log = LoggerFactory.getLogger(Mwcy.class);
 
   public static final String NAME = "喵物次元";

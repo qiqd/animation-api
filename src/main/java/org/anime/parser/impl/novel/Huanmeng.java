@@ -1,25 +1,26 @@
 package org.anime.parser.impl.novel;
 
 import org.anime.entity.animation.Schedule;
-import org.anime.entity.base.*;
+import org.anime.entity.base.Detail;
+import org.anime.entity.base.Episode;
+import org.anime.entity.base.Source;
+import org.anime.entity.base.ViewInfo;
 import org.anime.entity.novel.Novel;
 import org.anime.loger.Logger;
 import org.anime.loger.LoggerFactory;
-import org.anime.parser.HtmlParser;
-import org.anime.parser.impl.comic.Baozi;
+import org.anime.parser.AbstractNovelParser;
 import org.anime.util.HttpUtil;
 import org.anime.util.StringUtil;
 import org.jetbrains.annotations.Nullable;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Huanmeng implements HtmlParser, Serializable {
-  private static final Logger log = LoggerFactory.getLogger(Baozi.class);
+public class Huanmeng extends AbstractNovelParser {
+  private static final Logger log = LoggerFactory.getLogger(Huanmeng.class);
   public static final String NAME = "幻梦轻小说";
   public static final String LOGOURL = "https://www.huanmengacg.com/template/pc/czyrf01/img/logo2.png";
   public static final String BASEURL = "https://www.huanmengacg.com";
@@ -52,7 +53,7 @@ public class Huanmeng implements HtmlParser, Serializable {
   }
 
   @Override
-  public List<? extends Media> fetchSearchSync(String keyword, Integer page, Integer size) throws Exception {
+  public List<Novel> fetchSearchSync(String keyword, Integer page, Integer size) throws Exception {
     String searchUrl = "/index.php/book/search?action=search&key=" + keyword;
     Element doc = HttpUtil.createConnection(BASEURL + searchUrl).get().body();
     return doc.select("div.rankdatacont dl").stream().map(item -> {
@@ -71,7 +72,7 @@ public class Huanmeng implements HtmlParser, Serializable {
 
   @Nullable
   @Override
-  public Detail<? extends Media> fetchDetailSync(String mediaId) throws Exception {
+  public Detail<Novel> fetchDetailSync(String mediaId) throws Exception {
     Element doc = HttpUtil.createConnection(BASEURL + mediaId).get().body();
     Elements episodeNode = doc.select("div.zhangjie-quanbu.txt-xs li");
     if (episodeNode.isEmpty()) {
